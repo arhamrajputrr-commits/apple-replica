@@ -1,0 +1,2204 @@
+/* =========================
+   RESET / GLOBAL
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+li,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  overflow-x: hidden;
+  background: #fff;
+  color: #1d1d1f;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+sup {
+  font-size: 0.55em;
+  vertical-align: super;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================
+   ROOT VARIABLES
+   ========================= */
+
+:root {
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --color-text-primary: #1d1d1f;
+  --color-text-secondary: #6e6e73;
+  --color-link: #0071e3;
+  --color-link-hover: #0077ed;
+  --color-bg-light: #fbfbfd;
+  --color-bg-white: #fff;
+  --color-bg-dark: #000;
+  --color-border: #d2d2d7;
+  --color-footer-bg: #f5f5f7;
+  --color-footer-border: #d2d2d7;
+  --color-footer-text: #6e6e73;
+  --color-footer-link: #424245;
+
+  --nav-height: 44px;
+
+  --max-width: 1024px;
+  --side-padding: 22px;
+
+  --transition-fast: 0.24s ease;
+}
+
+/* =========================
+   BASE TYPOGRAPHY
+   ========================= */
+
+body {
+  font-family: var(--font-text);
+  font-size: 17px;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* =========================
+   GLOBAL LAYOUT
+   ========================= */
+
+.hero-content,
+.product-content,
+.promotion-content {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
+section {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* =========================
+   NAVIGATION
+   ========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.global-nav {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--nav-height);
+  gap: 20px;
+  padding: 0 max(env(safe-area-inset-left), 20px) 0 max(env(safe-area-inset-right), 20px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-logo img {
+  height: 15px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links li {
+  display: flex;
+}
+
+.nav-links a {
+  display: block;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  opacity: 1;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.nav-search img,
+.nav-bag img {
+  height: 16px;
+  width: 16px;
+  opacity: 0.9;
+}
+
+.nav-search,
+.nav-bag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-fast);
+}
+
+.nav-search:hover,
+.nav-bag:hover {
+  opacity: 0.7;
+}
+
+.nav-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-menu-toggle img {
+  height: 16px;
+  width: 16px;
+}
+
+.mobile-nav {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mobile-nav[hidden] {
+  display: none;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  padding: 8px max(env(safe-area-inset-left), 20px);
+}
+
+.mobile-nav-links a {
+  display: block;
+  padding: 14px 4px;
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mobile-nav-links li:last-child a {
+  border-bottom: none;
+}
+
+@media (max-width: 833px) {
+
+  .global-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-links {
+    display: none;
+  }
+
+  .nav-menu-toggle {
+    display: flex;
+  }
+}
+
+/* =========================
+   HERO SECTIONS
+   ========================= */
+
+.hero-section {
+  padding: 60px 0 40px;
+  background: var(--color-bg-white);
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-size: clamp(32px, 6vw, 58px);
+  line-height: 1.07143;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.hero-description {
+  font-size: clamp(17px, 2.4vw, 21px);
+  line-height: 1.381;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.hero-media {
+  width: 100%;
+}
+
+.hero-media img,
+.hero-media picture img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 18px;
+}
+
+/* =========================
+   BACK TO SCHOOL HERO
+   ========================= */
+
+.hero-back-to-school {
+  position: relative;
+  width: 100%;
+  height: min(720px, calc(100vw * 0.5625));
+
+  min-height: 560px;
+
+  overflow: hidden;
+
+  background: #f5f5f7;
+}
+
+/* Image fills the complete hero */
+
+.hero-back-to-school .hero-media {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+.hero-back-to-school .hero-media img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  border-radius: 0;
+}
+
+/* Content sits INSIDE the image */
+
+.hero-back-to-school .hero-content {
+  position: absolute;
+
+  top: 14%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 2;
+
+  width: min(90%, 700px);
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  gap: 5px;
+}
+
+/* Heading */
+
+.hero-back-to-school .hero-title {
+  font-size: clamp(40px, 3.3vw, 58px);
+  line-height: 1.08;
+
+  font-weight: 700;
+
+  color: #1d1d1f;
+
+  margin: 0;
+}
+
+/* Description */
+
+.hero-back-to-school .hero-description {
+  max-width: 620px;
+
+  font-size: clamp(27px, 1.5vw, 18px);
+  line-height: 1.35;
+
+  color: #1d1d1f;
+
+  margin: 0;
+}
+
+/* Buttons */
+
+.hero-back-to-school .hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 8px;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 833px) {
+
+  .hero-back-to-school {
+    height: 680px;
+    min-height: 680px;
+  }
+
+  .hero-back-to-school .hero-content {
+    top: 8%;
+
+    width: calc(100% - 32px);
+  }
+
+  .hero-back-to-school .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-back-to-school .hero-description {
+    font-size: 17px;
+  }
+
+  .hero-back-to-school .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .hero-back-to-school .hero-media img {
+    object-position: center center;
+  }
+}
+
+/* =========================
+   BACK TO SCHOOL CTA
+   ========================= */
+
+.hero-back-to-school .hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  margin-top: 14px;
+}
+
+.hero-back-to-school .hero-actions .cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 80px;
+  height: 44px;
+
+  padding: 0 22px;
+
+  border-radius: 999px;
+
+  background: #0071e3;
+  color: #ffffff;
+
+  font-family: var(--font-text);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Remove the arrow from the generic CTA */
+.hero-back-to-school .hero-actions .cta-link::after {
+  content: none;
+}
+
+/* Hover */
+.hero-back-to-school .hero-actions .cta-link:hover {
+  background: #0077ed;
+  color: #ffffff;
+
+  text-decoration: none;
+
+  transform: translateY(-1px);
+}
+
+/* Click */
+.hero-back-to-school .hero-actions .cta-link:active {
+  transform: scale(0.97);
+}
+
+/* Mobile */
+@media (max-width: 833px) {
+  .hero-back-to-school .hero-actions .cta-link {
+    height: 42px;
+    min-width: 76px;
+
+    padding: 0 20px;
+
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   PRODUCT SECTIONS
+   Image as background + content overlay
+   ========================================================= */
+
+.product-section {
+  position: relative;
+
+  width: 100%;
+  height: clamp(620px, 48vw, 760px);
+
+  padding: 0 !important;
+  margin: 0;
+
+  overflow: hidden;
+
+  background: var(--color-bg-light);
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.product-section .product-media {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  z-index: 1;
+}
+
+.product-section .product-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center center;
+
+  border-radius: 0;
+}
+
+
+/* =========================================================
+   PRODUCT CONTENT
+   ========================================================= */
+
+.product-section .product-content {
+  position: absolute;
+
+  top: 38px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(90%, 700px);
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  gap: 6px;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   PRODUCT TITLE
+   ========================================================= */
+
+.product-section .product-title {
+  margin: 0;
+
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.08;
+
+  font-weight: 600;
+  letter-spacing: -0.015em;
+
+  color: var(--color-text-primary);
+}
+
+
+/* =========================================================
+   PRODUCT DESCRIPTION
+   ========================================================= */
+
+.product-section .product-description {
+  margin: 0;
+
+  max-width: 620px;
+
+  font-size: clamp(17px, 1.7vw, 21px);
+  line-height: 1.38;
+
+  color: var(--color-text-primary);
+}
+
+
+/* =========================================================
+   PRODUCT BUTTONS
+   ========================================================= */
+
+.product-section .product-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 10px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 833px) {
+
+  .product-section {
+    height: 680px;
+  }
+
+  .product-section .product-content {
+    top: 35px;
+
+    width: calc(100% - 32px);
+  }
+
+  .product-section .product-title {
+    font-size: 34px;
+  }
+
+  .product-section .product-description {
+    font-size: 17px;
+  }
+
+  .product-section .product-actions {
+    gap: 10px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .product-section {
+    height: 620px;
+  }
+
+  .product-section .product-content {
+    top: 28px;
+  }
+
+  .product-section .product-title {
+    font-size: 30px;
+  }
+
+  .product-section .product-description {
+    font-size: 16px;
+  }
+}
+
+/* =========================================================
+   IPHONE HERO
+   Content OVER the image
+   ========================================================= */
+
+.hero-iphone {
+  position: relative;
+
+  width: 100%;
+  height: clamp(600px, 48vw, 820px);
+
+  padding: 0 !important;
+  margin: 0;
+
+  overflow: hidden;
+
+  background: #f5f5f7;
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.hero-iphone .hero-media {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  z-index: 1;
+}
+
+.hero-iphone .hero-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center center;
+
+  border-radius: 0;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.hero-iphone .hero-content {
+  position: absolute;
+
+  top: 55px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: min(90%, 700px);
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  gap: 8px;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.hero-iphone .hero-title {
+  margin: 0;
+
+  font-size: clamp(46px, 5vw, 62px);
+  line-height: 1.08;
+
+  font-weight: 600;
+
+  color: #1d1d1f;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.hero-iphone .hero-description {
+  max-width: 620px;
+
+  margin: 0;
+
+  font-size: clamp(17px, 1.7vw, 41px);
+  line-height: 1.38;
+
+  color: #1d1d1f;
+}
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.hero-iphone .hero-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-top: 10px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 833px) {
+
+  .hero-iphone {
+    height: 680px;
+  }
+
+  .hero-iphone .hero-content {
+    top: 40px;
+
+    width: calc(100% - 32px);
+  }
+
+  .hero-iphone .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-iphone .hero-description {
+    font-size: 17px;
+  }
+
+  .hero-iphone .hero-actions {
+    gap: 10px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .hero-iphone {
+    height: 620px;
+  }
+
+  .hero-iphone .hero-content {
+    top: 30px;
+  }
+
+  .hero-iphone .hero-title {
+    font-size: 30px;
+  }
+
+  .hero-iphone .hero-description {
+    font-size: 16px;
+  }
+}
+
+/* =========================
+   PROMOTIONAL SECTIONS
+   ========================= */
+
+.promotion-section {
+  padding: 48px 0 32px;
+  background: var(--color-bg-white);
+}
+
+.promotion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.promotion-title {
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.125;
+  font-weight: 600;
+}
+
+.promotion-description {
+  font-size: 19px;
+  line-height: 1.42105;
+  color: var(--color-text-primary);
+  max-width: 600px;
+}
+
+.promotion-actions {
+  margin-top: 8px;
+}
+
+.promotion-media img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* =========================================================
+   ENDLESS ENTERTAINMENT — APPLE STYLE
+   ========================================================= */
+
+.entertainment-section {
+  width: 100%;
+  overflow: hidden;
+  padding: 55px 0 35px;
+  background: #f5f5f7;
+}
+
+.entertainment-title {
+  margin: 0 0 35px;
+  text-align: center;
+  font-size: clamp(30px, 4vw, 42px);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: #1d1d1f;
+}
+
+
+/* =========================================================
+   CAROUSEL
+   ========================================================= */
+
+.entertainment-carousel {
+  width: 100%;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   LARGE ROW
+   ========================================================= */
+
+.entertainment-row {
+  width: 100%;
+  overflow: hidden;
+}
+
+.entertainment-large-row {
+  margin-bottom: 8px;
+}
+
+.entertainment-track {
+  display: flex;
+  width: max-content;
+  gap: 8px;
+
+  animation: entertainmentLargeMove 80s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* Pause when mouse is over it */
+
+.entertainment-track:hover {
+  animation-play-state: paused;
+}
+
+
+/* Large cards */
+
+.entertainment-card {
+  position: relative;
+
+  flex: 0 0 680px;
+
+  width: 760px;
+  height: 428px;
+
+  overflow: hidden;
+
+  background: #000;
+}
+
+
+/* Images */
+
+.entertainment-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LARGE CARD OVERLAY
+   ========================================================= */
+
+.entertainment-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 70px 28px 25px;
+
+  color: #fff;
+
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, .75),
+      rgba(0, 0, 0, .25),
+      transparent);
+}
+
+.entertainment-overlay span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.entertainment-overlay strong {
+  display: block;
+
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.entertainment-overlay p {
+  margin: 5px 0 0;
+
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   SMALL ROW
+   ========================================================= */
+
+.entertainment-small-row {
+  margin-top: 0;
+}
+
+.entertainment-small-track {
+  display: flex;
+
+  width: max-content;
+
+  gap: 8px;
+
+  animation: entertainmentSmallMove 98s linear infinite reverse;
+
+  will-change: transform;
+}
+
+.entertainment-small-track:hover {
+  animation-play-state: paused;
+}
+
+
+/* Small cards */
+
+.entertainment-small-card {
+  position: relative;
+
+  flex: 0 0 300px;
+
+  width: 340px;
+  height: 191px;
+
+  overflow: hidden;
+
+  background: #000;
+}
+
+
+/* Images */
+
+.entertainment-small-card img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  user-select: none;
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SMALL CARD OVERLAY
+   ========================================================= */
+
+.small-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 45px 15px 13px;
+
+  color: #fff;
+
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, .75),
+      transparent);
+}
+
+.small-overlay span {
+  display: block;
+
+  font-size: 11px;
+  margin-bottom: 2px;
+}
+
+.small-overlay strong {
+  display: block;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SEAMLESS ANIMATION
+   ========================================================= */
+
+/*
+   12 cards = 2 identical sets.
+   We move exactly half of the track.
+*/
+
+@keyframes entertainmentLargeMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 4px));
+  }
+
+}
+
+
+@keyframes entertainmentSmallMove {
+
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 4px));
+  }
+
+}
+
+
+/* =========================================================
+   DOTS
+   ========================================================= */
+
+.entertainment-dots {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 18px;
+}
+
+.entertainment-dots button {
+  width: 7px;
+  height: 7px;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #a1a1a6;
+
+  cursor: pointer;
+}
+
+.entertainment-dots button.active {
+  transform: scale(1.2);
+
+  background: #1d1d1f;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .entertainment-card {
+    flex-basis: 560px;
+
+    width: 560px;
+    height: 315px;
+  }
+
+  .entertainment-small-card {
+    flex-basis: 260px;
+
+    width: 260px;
+    height: 146px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .entertainment-section {
+    padding: 45px 0 30px;
+  }
+
+  .entertainment-title {
+    margin-bottom: 25px;
+    font-size: 30px;
+  }
+
+  .entertainment-card {
+    flex-basis: 82vw;
+
+    width: 82vw;
+    height: calc(82vw * .5625);
+  }
+
+  .entertainment-small-card {
+    flex-basis: 62vw;
+
+    width: 62vw;
+    height: calc(62vw * .5625);
+  }
+
+  .entertainment-overlay {
+    padding: 50px 18px 18px;
+  }
+
+  .entertainment-overlay strong {
+    font-size: 17px;
+  }
+
+  .entertainment-overlay p {
+    font-size: 12px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .entertainment-track,
+  .entertainment-small-track {
+    animation: none;
+  }
+
+}
+
+/* =========================
+   BUTTONS / CTA LINKS
+   ========================= */
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 0 20px;
+
+  border-radius: 980px;
+
+  background: #0071e3;
+  color: #ffffff;
+
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+
+  letter-spacing: -0.01em;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  border: 1px solid #0071e3;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Remove the old arrow */
+.cta-link::after {
+  content: none;
+}
+
+/* Hover */
+.cta-link:hover {
+  background: #0077ed;
+  border-color: #0077ed;
+
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Keyboard focus */
+.cta-link:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 3px;
+}
+
+/* Click */
+.cta-link:active {
+  transform: scale(0.97);
+}
+
+/* CTA groups */
+.hero-actions,
+.product-actions,
+.promotion-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+.cta-buy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 44px;
+  padding: 0 20px;
+
+  border-radius: 980px;
+  color: #0071e3;
+  font-family: var(--font-text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+
+  letter-spacing: -0.01em;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  border: 1px solid #0071e3;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cta-buy:hover {
+  background-color: #0071e3;
+  color: white;
+}
+
+/* Mobile */
+@media (max-width: 833px) {
+  .cta-link {
+    min-height: 42px;
+    padding: 0 20px;
+
+    font-size: 16px;
+  }
+
+  .hero-actions,
+  .product-actions,
+  .promotion-actions {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================
+   MEDIA
+   ========================= */
+
+video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* =========================================================
+   FOOTER — APPLE STYLE
+   ========================================================= */
+
+.footer {
+  background: #f5f5f7;
+  color: #6e6e73;
+  font-size: 12px;
+  line-height: 1.33337;
+  padding: 0 22px 20px;
+  text-align: left;
+}
+
+/* =========================================================
+   FOOTNOTES
+   ========================================================= */
+
+.footer-legal {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 16px 0 15px;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.footer-footnotes {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.footer-footnotes li {
+  margin: 0 0 8px;
+}
+
+.footer-footnotes li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-footnotes a {
+  color: #424245;
+  text-decoration: underline;
+}
+
+/* =========================================================
+   FOOTER NAVIGATION
+   ========================================================= */
+
+/* =========================================================
+   FOOTER — APPLE STYLE
+   ========================================================= */
+
+.footer {
+  background: #f5f5f7;
+  border-top: 1px solid #d2d2d7;
+  padding: 32px 42px 20px;
+  font-size: 12px;
+  line-height: 1.333;
+  color: #6e6e73;
+  text-align: left;
+}
+
+
+/* =========================
+   LEGAL / FOOTNOTES
+   ========================= */
+
+.footer-legal {
+  max-width: 1024px;
+  margin: 0 auto 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #d2d2d7;
+}
+
+.footer-footnotes {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.footer-footnotes li {
+  margin-bottom: 8px;
+}
+
+.footer-footnotes li:last-child {
+  margin-bottom: 0;
+}
+
+.footer-footnotes a {
+  color: #424245;
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   MAIN FOOTER — 5 COLUMNS
+   ========================================================= */
+
+.footer-nav {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 0 18px;
+
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: 32px;
+
+  border-bottom: 1px solid #d2d2d7;
+}
+
+
+/* Each main column */
+
+.footer-main-column {
+  min-width: 0;
+}
+
+
+/* Individual sections */
+
+.footer-column {
+  margin: 0;
+}
+
+.footer-column + .footer-column {
+  margin-top: 26px;
+}
+
+
+/* Section headings */
+
+.footer-column-title {
+  margin: 0 0 8px;
+
+  font-size: 12px;
+  line-height: 1.333;
+  font-weight: 600;
+
+  color: #1d1d1f;
+}
+
+
+/* Lists */
+
+.footer-column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin: 0 0 7px;
+}
+
+.footer-column ul li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Links */
+
+.footer-column a {
+  color: #6e6e73;
+  text-decoration: none;
+}
+
+.footer-column a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   MORE WAYS TO SHOP
+   ========================================================= */
+
+.footer-more-ways {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 16px 0;
+
+  border-bottom: 0;
+}
+
+.footer-more-ways p {
+  margin: 0;
+}
+
+.footer-more-ways a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   BOTTOM AREA
+   ========================================================= */
+
+.footer-region {
+  max-width: 1024px;
+  /* margin: 0 auto; */
+  padding: 0;
+  text-align: right;
+}
+
+.region-selector {
+  border: 0;
+  background: transparent;
+  padding: 0;
+
+  font: inherit;
+  color: #6e6e73;
+
+  cursor: pointer;
+}
+
+
+/* Copyright + legal links */
+
+.footer-bottom {
+  max-width: 1024px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  padding-top: 16px;
+
+  border-top: 1px solid #d2d2d7;
+}
+
+.footer-copyright {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.footer-legal-links li {
+  position: relative;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.footer-legal-links li:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  top: 50%;
+
+  width: 1px;
+  height: 12px;
+
+  transform: translateY(-50%);
+
+  background: #d2d2d7;
+}
+
+.footer-legal-links li:first-child {
+  padding-left: 0;
+}
+
+.footer-legal-links a {
+  color: #6e6e73;
+  text-decoration: none;
+}
+
+.footer-legal-links a:hover {
+  color: #1d1d1f;
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   DESKTOP COUNTRY POSITION
+   ========================================================= */
+
+.footer-region {
+  position: relative;
+  height: 0;
+  top: -34px;
+  pointer-events: none;
+}
+
+.footer-region .region-selector {
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 30px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-region {
+    height: auto;
+    top: auto;
+    margin-top: 10px;
+    text-align: left;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .footer {
+    padding: 24px 16px 20px;
+    font-size: 12px;
+  }
+
+  .footer-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 28px;
+  }
+
+  .footer-column + .footer-column {
+    margin-top: 24px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-legal-links {
+    gap: 8px 0;
+  }
+
+  .footer-region {
+    margin-top: 12px;
+  }
+}
+
+
+@media (max-width: 420px) {
+
+  .footer-nav {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   APPLE STYLE 2-COLUMN PRODUCT CARD GRID
+   ========================================================= */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  width: 100%;
+  padding: 3px;
+
+  background: #fff;
+}
+
+
+/* =========================================================
+   INDIVIDUAL PRODUCT CARD
+   ========================================================= */
+
+.product-grid .product-section {
+  position: relative;
+
+  width: 100%;
+  height: 590px;
+
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #f5f5f7;
+}
+
+
+/* =========================================================
+   CARD IMAGE
+   ========================================================= */
+
+.product-grid .product-media {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  z-index: 1;
+}
+
+.product-grid .product-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center center;
+
+  border-radius: 0;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.product-grid .product-content {
+  position: absolute;
+
+  top: 32px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: calc(100% - 32px);
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  gap: 4px;
+
+  z-index: 10;
+}
+
+
+/* =========================================================
+   CARD TITLE
+   ========================================================= */
+
+.product-grid .product-title {
+  margin: 0;
+
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 1.08;
+
+  font-weight: 400;
+
+  color: #1d1d1f;
+}
+
+
+/* =========================================================
+   CARD DESCRIPTION
+   ========================================================= */
+
+.product-grid .product-description {
+  margin: 0;
+
+  max-width: 380px;
+
+  font-size: clamp(14px, 1.35vw, 17px);
+  line-height: 1.35;
+
+  color: #1d1d1f;
+}
+
+
+/* =========================================================
+   CARD BUTTONS
+   ========================================================= */
+
+.product-grid .product-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 7px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 733px) {
+
+  .product-grid {
+    grid-template-columns: 1fr;
+
+    gap: 3px;
+
+    padding: 3px;
+  }
+
+  .product-grid .product-section {
+    height: 560px;
+  }
+
+  .product-grid .product-content {
+    top: 28px;
+
+    width: calc(100% - 28px);
+  }
+
+  .product-grid .product-title {
+    font-size: 30px;
+  }
+
+  .product-grid .product-description {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .product-grid .product-section {
+    height: 520px;
+  }
+
+  .product-grid .product-content {
+    top: 24px;
+  }
+
+  .product-grid .product-title {
+    font-size: 28px;
+  }
+
+  .product-grid .product-description {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   PROMOTION 2-COLUMN CARDS
+   ========================================================= */
+
+.promotion-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  width: 100%;
+  padding: 3px;
+
+  background: #fff;
+}
+
+
+.promotion-grid .promotion-section {
+  position: relative;
+
+  width: 100%;
+  height: 590px;
+
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #f5f5f7;
+}
+
+
+/* Image */
+
+.promotion-grid .promotion-media {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+.promotion-grid .promotion-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center center;
+
+  border-radius: 0;
+}
+
+
+/* Content */
+
+.promotion-grid .promotion-content {
+  position: absolute;
+
+  top: 32px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: calc(100% - 32px);
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
+  gap: 5px;
+
+  z-index: 10;
+}
+
+
+/* Title */
+
+.promotion-grid .promotion-title {
+  margin: 0;
+
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 1.08;
+
+  font-weight: 600;
+
+  color: #1d1d1f;
+}
+
+
+/* Description */
+
+.promotion-grid .promotion-description {
+  max-width: 380px;
+
+  margin: 0;
+
+  font-size: clamp(14px, 1.35vw, 17px);
+  line-height: 1.35;
+
+  color: #1d1d1f;
+}
+
+
+/* Actions */
+
+.promotion-grid .promotion-actions {
+  margin-top: 7px;
+}
+
+
+/* Mobile */
+
+@media (max-width: 733px) {
+
+  .promotion-grid {
+    grid-template-columns: 1fr;
+
+    gap: 3px;
+
+    padding: 3px;
+  }
+
+  .promotion-grid .promotion-section {
+    height: 560px;
+  }
+
+  .promotion-grid .promotion-content {
+    top: 28px;
+
+    width: calc(100% - 28px);
+  }
+}
